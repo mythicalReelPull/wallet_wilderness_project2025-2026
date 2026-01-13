@@ -68,4 +68,32 @@
   "amount" : 50.0,
   "type" : "spend",
   "sessionId" : "session_1768294224269"
+}, {
+  "profileId" : 1768294750398,
+  "profileName" : "antonio123",
+  "category" : "starting_balance",
+  "amount" : 330.0,
+  "type" : "init",
+  "sessionId" : "session_1768294753746"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "food",
+  "amount" : 15.0,
+  "type" : "spend",
+  "sessionId" : "session_1768294753746"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "shopping",
+  "amount" : 40.0,
+  "type" : "spend",
+  "sessionId" : "session_1768294753746"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "bills",
+  "amount" : 120.0,
+  "type" : "spend",
+  "sessionId" : "session_1768294753746"
 } ]
