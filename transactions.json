@@ -1,0 +1,71 @@
+[ {
+  "profileId" : 1768255195604,
+  "profileName" : "mando",
+  "category" : "starting_balance",
+  "amount" : 340.0,
+  "type" : "init",
+  "sessionId" : "session_1768293915646"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "food",
+  "amount" : 15.0,
+  "type" : "spend",
+  "sessionId" : "session_1768293915646"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "shopping",
+  "amount" : 150.0,
+  "type" : "spend",
+  "sessionId" : "session_1768293915646"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "bills",
+  "amount" : 120.0,
+  "type" : "spend",
+  "sessionId" : "session_1768293915646"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "misc",
+  "amount" : 50.0,
+  "type" : "spend",
+  "sessionId" : "session_1768293915646"
+}, {
+  "profileId" : 1768255195604,
+  "profileName" : "mando",
+  "category" : "starting_balance",
+  "amount" : 270.0,
+  "type" : "init",
+  "sessionId" : "session_1768294224269"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "food",
+  "amount" : 15.0,
+  "type" : "spend",
+  "sessionId" : "session_1768294224269"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "savings",
+  "amount" : 100.0,
+  "type" : "save",
+  "sessionId" : "session_1768294224269"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "bills",
+  "amount" : 120.0,
+  "type" : "spend",
+  "sessionId" : "session_1768294224269"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "misc",
+  "amount" : 50.0,
+  "type" : "spend",
+  "sessionId" : "session_1768294224269"
+} ]
