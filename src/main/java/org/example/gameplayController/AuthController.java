@@ -21,69 +21,88 @@ public class AuthController {
     }
 
     public void showLogin() {
-        VBox root = new VBox(12);
+        VBox root = new VBox(15);
         root.setAlignment(Pos.CENTER);
+        // This padding ensures the elements aren't hugging the top/bottom
+        root.setStyle("-fx-padding: 50; -fx-background-color: #ffffff;");
 
+        // 1. THE TITLE
+        Label title = new Label("WALLET WILDERNESS");
+        title.setStyle("-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;");
+
+        // 2. THE INPUTS (Set Max Width so they don't stretch)
         TextField username = new TextField();
         username.setPromptText("Username");
+        username.setMaxWidth(220);
+        username.setStyle("-fx-pref-height: 30px;");
 
         PasswordField password = new PasswordField();
         password.setPromptText("Password");
+        password.setMaxWidth(220);
+        password.setStyle("-fx-pref-height: 30px;");
 
         Label error = new Label();
+        error.setStyle("-fx-text-fill: #e74c3c; -fx-font-weight: bold;");
 
+        // 3. THE BUTTONS
         Button login = new Button("Login");
-        Button register = new Button("Register");
+        login.setMinWidth(220);
+        login.setStyle("-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold;");
 
+        Button register = new Button("Register New Account");
+        register.setStyle("-fx-background-color: transparent; -fx-text-fill: #3498db; -fx-underline: true;");
+
+        register.setOnAction(e -> {
+            String userText = username.getText();
+            String passText = password.getText();
+
+            if (userText.isEmpty() || passText.isEmpty()) {
+                error.setText("Please enter details to register.");
+                return;
+            }
+
+            String request = "REGISTER|" + userText + "|" + passText;
+            String response = app.getNetworkManager().sendRequest(request);
+
+            if (response != null && response.startsWith("SUCCESS")) {
+                error.setText("Registered! Now click Login.");
+                error.setStyle("-fx-text-fill: green;");
+            } else {
+                String msg = (response != null) ? response.split("\\|")[1] : "Server unreachable";
+                error.setText(msg);
+            }
+        });
+
+        // Add everything to the VBox
+        root.getChildren().addAll(title, username, password, error, login, register);
+
+        // --- THE CRITICAL PART: RENDER THE SCENE ---
+        Scene scene = new Scene(root, 400, 500);
+        stage.setScene(scene);
+        stage.setTitle("Login");
+        stage.show(); // <--- If this isn't here, you see nothing!
+
+        // LOGIN LOGIC (Shortened for clarity)
         login.setOnAction(e -> {
-            // 1. Send the request via the network
             String request = "LOGIN|" + username.getText() + "|" + password.getText();
             String response = app.getNetworkManager().sendRequest(request);
 
-            // 2. Parse the response
             if (response != null && response.startsWith("SUCCESS")) {
                 try {
-                    // The server sends "SUCCESS|{JSON_USER_DATA}"
                     String userJson = response.split("\\|")[1];
-                    ObjectMapper mapper = new ObjectMapper();
-
-                    // Reconstruct the User object from the JSON string the server sent
-                    ctx.currentUser = mapper.readValue(userJson, User.class);
-
-                    app.showProfileSelection();
+                    ctx.currentUser = new ObjectMapper().readValue(userJson, User.class);
+                    app.showProfileSelection(); // Move to next screen
                 } catch (Exception ex) {
-                    error.setText("Error parsing user data.");
+                    error.setText("Login failed: JSON Error");
                 }
             } else {
-                // The server sends "ERROR|Reason"
-                String errorMsg = response != null ? response.split("\\|")[1] : "Server unreachable";
-                error.setText(errorMsg);
+                error.setText(response != null ? response.split("\\|")[1] : "Server Offline");
             }
         });
 
-        register.setOnAction(e -> {
-            String response = app.getNetworkManager().sendRequest("REGISTER|" + username.getText() + "|" + password.getText());
 
-            if (response != null && response.startsWith("SUCCESS")) {
-                try {
-                    String jsonPart = response.split("\\|")[1];
-                    // Reconstruct the user object
-                    ctx.currentUser = new ObjectMapper().readValue(jsonPart, User.class);
-
-                    // Success! Move to profile selection
-                    app.showProfileSelection();
-                } catch (Exception ex) {
-                    error.setText("Client Error: Could not parse server response.");
-                }
-            } else if (response != null && response.startsWith("ERROR")) {
-                error.setText(response.split("\\|")[1]);
-            } else {
-                error.setText("Server did not respond.");
-            }
-        });
-
-        root.getChildren().addAll(username, password, login, register, error);
-        stage.setScene(new Scene(root, 400, 400));
-        stage.show();
     }
+
+
+
 }
