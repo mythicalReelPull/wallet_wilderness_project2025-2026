@@ -1,0 +1,57 @@
+[ {
+  "profileId" : 1768255088364,
+  "profileName" : "grogulikesmango",
+  "category" : "starting_balance",
+  "amount" : 320.0,
+  "type" : "init",
+  "sessionId" : "session_1768255120202"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "food",
+  "amount" : 15.0,
+  "type" : "spend",
+  "sessionId" : "session_1768255120202"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "bills",
+  "amount" : 120.0,
+  "type" : "spend",
+  "sessionId" : "session_1768255120202"
+}, {
+  "profileId" : 1768255195604,
+  "profileName" : "mando",
+  "category" : "starting_balance",
+  "amount" : 300.0,
+  "type" : "init",
+  "sessionId" : "session_1768255200830"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "food",
+  "amount" : 15.0,
+  "type" : "spend",
+  "sessionId" : "session_1768255200830"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "savings",
+  "amount" : 100.0,
+  "type" : "save",
+  "sessionId" : "session_1768255200830"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "bills",
+  "amount" : 120.0,
+  "type" : "spend",
+  "sessionId" : "session_1768255200830"
+}, {
+  "profileId" : -1,
+  "profileName" : null,
+  "category" : "misc",
+  "amount" : 50.0,
+  "type" : "spend",
+  "sessionId" : "session_1768255200830"
+} ]
